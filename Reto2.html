@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function alertName(){
+            let gradosc1 = parseFloat(document.forms[0].gradosc.value);
+            let conver1 = parseInt(document.forms[0].conver.value);
+            let sumaF = (gradosc1* 9/5+ 32);
+            let sumaK = (gradosc1+273.15);
+            if(conver1 == 1){
+                document.write("Tu conversion a Ferenheit °",sumaF);
+            }
+            if(conver1 == 2){
+                document.write("Tu conversion a Kelvin °",sumaK);
+            }
+        }
+    </script>
+</head>
+<body>
+    <form id="myform" onsubmit="return alertName();">
+        <fieldset>
+            <legend>Convertidor</legend>
+            <label for="gradosc">°C</label>
+            <input type="text" id="gradosc" name="gradosc"><br><br>
+            <label for="conver">Convertir a</label>
+            <select name="conver" id="conver">
+                <option value="1">Farenheit</option>
+                <option value="2">Kelvin</option>
+            </select>
+            <p><button>Submit</button></p>
+        </fieldset>
+    </form>
+</body>
+</html>

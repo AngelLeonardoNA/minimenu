@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <body>
+        <div id="myPlot" style="width:100%;max-width:700px"></div>
+        <script>
+            let  inicio = parseInt(prompt("Punto de Inicio"));
+            let  final = parseInt(prompt("Punto de Inicio"));
+            let  opc = parseInt(prompt("1.-Seno 2.-Coseno 3.-Tangente 4.- Cotangente"));
+
+            let exp = "";
+            if(opc==1){
+                exp = "Math.sin(x)";
+            }
+            if(opc==2){
+                exp = "Math.cos(x)";
+            }
+            if(opc==3){
+                exp = "Math.tan(x)";
+            }
+            if(opc==4){
+                exp = "Math.tanh(x)";
+            }
+            // Generate values
+            let xValues = [];
+            let yValues = [];
+            for (let x = inicio; x <= final; x += 0.1) {
+            xValues.push(x);
+            yValues.push(eval(exp));
+            }
+            // Display using Plotly
+            const data = [{x:xValues, y:yValues, mode:"lines"}];
+            const layout = {title: "y = " + exp};
+            Plotly.newPlot("myPlot", data, layout);
+        </script>
+    </body>
+</html>
