@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            button{
+                padding: 2px;
+                margin: 3px;
+            }
+        </style>
+        <script>
+            let opc = 0;
+            function juega(){
+                let palabra = document.forms[0].usuario.value;
+                
+                if (palabra == "Murcielago") {
+                    alert("Ganaste");
+                }else
+                opc++;
+                
+                const canvas = document.getElementById("myCanvas");
+                const ctx = canvas.getContext("2d");
+                if (opc == 1) {
+                    //cabeza
+                    ctx.beginPath();
+                    ctx.arc(200,50,40,0,2*Math.PI);
+                    ctx.stroke(); 
+                }
+                
+                if(opc==2){
+                    //manoizq
+                    ctx.beginPath();
+                    ctx.moveTo(200,90);
+                    ctx.lineTo(150,120);
+                    ctx.stroke();
+                }
+                if(opc==3){
+                    //manoder
+                    ctx.beginPath();
+                    ctx.moveTo(200,90);
+                    ctx.lineTo(250,120);
+                    ctx.stroke();
+                }
+                if(opc==4){
+                    //cuerpo
+                    ctx.beginPath();
+                    ctx.moveTo(200,90);
+                    ctx.lineTo(200,160);
+                    ctx.stroke();
+                }
+                if(opc==5){
+                    //pieizq    
+                    ctx.beginPath();
+                    ctx.moveTo(200,160);
+                    ctx.lineTo(150,200);
+                    ctx.stroke();
+                }
+                if(opc==6){
+                    //pieder
+                    ctx.beginPath();
+                    ctx.moveTo(200,160);
+                    ctx.lineTo(250,200);
+                    ctx.stroke();
+                    alert("Perdiste");
+                }
+
+            }
+            function limpiar(){
+                const canvas = document.getElementById("myCanvas");
+                const ctx = canvas.getContext("2d");
+                ctx.fillStyle = "white";
+                ctx.fillRect(10,5,400,400);
+                opc = 0;
+            }
+        </script>
+    </head>
+    <body>
+        <h1>ahorcado Parte I</h1>
+        <canvas id="myCanvas" width="500" height="250" style="border: 1px solid gray;"></canvas>
+        <form action="myform">
+            <label for="usuario">Dame la palabra </label><input id="usuario" type="text" name="usuario">
+            <input type="hidden" name="opo" value="0">
+        </form>
+        <p><button id="dibujar" onClick="juega()">Jugar</button></p>
+        <p><button id="limpiar" onClick="limpiar()">Borrar</button></p>
+    </body>
+</html>
