@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript"
+            src="js/jquery/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript"
+            src="js/jquery/jquery-ui-1.8.17.custom.min.js"></script>
+        <script type="text/javascript" src="jspdf.js"></script>
+
+        <script type="text/javascript" src="jspdf.plugin.addimage.js"></script>
+
+        <script type="text/javascript"
+            src="jspdf.plugin.standard_fonts_metrics.js"></script>
+        <script type="text/javascript"
+            src="jspdf.plugin.split_text_to_size.js"></script>
+        <script type="text/javascript" src="jspdf.plugin.from_html.js"></script>
+        <title>Document</title>
+    </head>
+    <body>
+        <iframe frameborder="0" width="500" height="400"></iframe>
+        <script>
+        
+            var car = prompt('Caracter');
+            var multiplier = prompt('Altura:');
+            multiplier = parseInt(multiplier);
+
+            var doc = new jsPDF();
+            doc.setFontSize(16);
+            doc.text(20, 30, 'Caracter: ' + name);
+            let cor = 30;
+            let cor1 = 0;
+            let rec=0;
+            for(var i = 0; i < multiplier; i ++) {
+                cor=cor+10
+                cor1=20;
+                for(let j=0; j<rec+1;j++){
+                    cor1=cor1+10
+                    doc.text( car, cor1,cor);
+                }
+                rec = rec+1;
+                if(rec==multiplier){
+                    break;
+                }
+            }
+
+            var string = doc.output('datauristring');
+
+            $('iframe').attr('src', string);
+        </script>
+    </body>
+</html>
